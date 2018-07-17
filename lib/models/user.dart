@@ -7,5 +7,5 @@ class User {
   User(this._id, this._activeRecipes);
 
   get id => this._id;
-  get activeRecipes => activeRecipes;
+  get activeRecipes => _activeRecipes;
 }

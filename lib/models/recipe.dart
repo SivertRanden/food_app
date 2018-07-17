@@ -14,6 +14,35 @@ class Recipe {
 
   Recipe(this._name, this._mealType, this._tag, this._imageUrl, this._description, this._ingredients, this._steps, this._nutrients, this._allergens);
 
+  Recipe.fromMap(Map<String, dynamic> data)
+    : this(
+      data["name"],
+      data["mealType"],
+      data["tag"],
+      data["imageUrl"],
+      data["description"],
+      _getIngredientsFromData(data["ingredients"]),
+      data["steps"],
+      _getNutrientsFromData(["nutrients"]),
+      data["allergens"]
+    );
+
+  static List<Ingredient> _getIngredientsFromData(dynamic data) {
+    List<Ingredient> ingredientList = [];
+    data.forEach((ingredient) {
+      ingredientList.add(Ingredient.fromMap(ingredient));
+    });
+    return ingredientList;
+  }
+
+  static List<Nutrient> _getNutrientsFromData(dynamic data) {
+    List<Nutrient> nutrientList = [];
+    data.forEach((nutrient) {
+      nutrientList.add(Nutrient.fromMap(nutrient));
+    });
+    return nutrientList;
+  }
+
   get name => _name;
   get mealType => _mealType;
   get tag => _tag;
