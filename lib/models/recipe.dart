@@ -22,12 +22,12 @@ class Recipe {
       data["imageUrl"],
       data["description"],
       _getIngredientsFromData(data["ingredients"]),
-      data["steps"],
-      _getNutrientsFromData(["nutrients"]),
-      data["allergens"]
+      _getStringsFromDynamicArray(data["steps"]),
+      _getNutrientsFromData(data["nutrients"]),
+      _getStringsFromDynamicArray(data["allergens"])
     );
 
-  static List<Ingredient> _getIngredientsFromData(dynamic data) {
+  static List<Ingredient> _getIngredientsFromData(data) {
     List<Ingredient> ingredientList = [];
     data.forEach((ingredient) {
       ingredientList.add(Ingredient.fromMap(ingredient));
@@ -35,12 +35,20 @@ class Recipe {
     return ingredientList;
   }
 
-  static List<Nutrient> _getNutrientsFromData(dynamic data) {
+  static List<Nutrient> _getNutrientsFromData(data) {
     List<Nutrient> nutrientList = [];
     data.forEach((nutrient) {
       nutrientList.add(Nutrient.fromMap(nutrient));
     });
     return nutrientList;
+  }
+
+  static List<String> _getStringsFromDynamicArray(data) {
+    List<String> strings = [];
+    data.forEach((item) {
+      strings.add(item.toString());
+    });
+    return strings;
   }
 
   get name => _name;

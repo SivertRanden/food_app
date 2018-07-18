@@ -4,7 +4,7 @@ class Ingredient {
 
   Ingredient(this._name, this._amount);
 
-  Ingredient.fromMap(Map<String, dynamic> data)
+  Ingredient.fromMap(Map<dynamic, dynamic> data)
     : this(data["name"], data["amount"]);
 
   get name => _name;

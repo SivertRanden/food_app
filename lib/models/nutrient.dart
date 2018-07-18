@@ -4,7 +4,7 @@ class Nutrient {
 
   Nutrient(this._name, this._amount);
 
-  Nutrient.fromMap(Map<String, dynamic> data)
+  Nutrient.fromMap(Map<dynamic, dynamic> data)
     : this(data["name"], data["amount"]);
 
   get name => _name;

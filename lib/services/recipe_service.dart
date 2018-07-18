@@ -4,14 +4,16 @@ import "package:cloud_firestore/cloud_firestore.dart";
 import 'package:food_app/models/recipe.dart';
 
 class RecipeService {
-  List<Recipe> _recipes;
+  
   var recipesRef = Firestore.instance.collection("recipes");
-  RecipeService() {
-    _recipes = List<Recipe>();
-  }
 
-  void getRecipes() async {
+  Future<List<Recipe>> getRecipes() async {
+    List<Recipe> recipes = [];
     QuerySnapshot snapshot = await recipesRef.getDocuments();
-    
+    snapshot.documents.forEach((document) {
+      recipes.add(Recipe.fromMap(document.data));
+    });
+    print(recipes);
+    return recipes;
   }
 }
