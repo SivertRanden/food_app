@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
+import 'dart:async';
 
 import "package:food_app/models/recipe.dart";
 import "package:food_app/models/ingredient.dart";
@@ -20,7 +21,7 @@ class HomePageState extends State<HomePage> {
 
   RecipeService recipeService = RecipeService();
   List<Recipe> recipes;
-  int selectedDay = -1;
+  bool showLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +36,28 @@ class HomePageState extends State<HomePage> {
               children: <Widget>[
                 RecipeCardList(recipes),
                 FloatingActionButton(
-                  child: Icon(Icons.refresh),
-                  onPressed: () {
-                    recipeService.getRecipes()
-                      .then((_recipes) {
-                        setState(() {
-                          recipes = _recipes;
-                        });
-                      });
+                  child: Icon(Icons.assignment, size: 30.0,),
+                  onPressed: () async {
+                    setState(() {
+                      showLoading = true;
+                    });
+                    recipes = await recipeService.getRecipes();
+                    setState(() {
+                      showLoading = false;
+                    });
                   }
-                )
+                ),
+                Center(
+                  child: showLoading ? SizedBox(
+                    height: 50.0,
+                    width: 50.0,
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                      value: null,
+                      strokeWidth: 7.0,
+                    ),
+                  ) : null
+                ),
               ]
             ) 
           )  

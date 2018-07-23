@@ -1,19 +1,19 @@
 import "package:flutter/material.dart";
 import "../UI/gradient-app-bar.dart";
+import "../UI/UI-Utils.dart";
 
-class ContactPage extends StatefulWidget {
-  @override
-  State createState() => ContactPageState();
-}
-
-class ContactPageState extends State<ContactPage> {
-
+class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Material(
-        color: Colors.white
-      )
+    return Column(
+      children: <Widget>[
+        GradientAppBar("FoodApp"),
+        Expanded(
+          child: Container(
+            decoration: UIUtils.getDecoration(context)
+          )
+        )
+      ]
     );
   }
 }

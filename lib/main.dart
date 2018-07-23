@@ -8,7 +8,7 @@ void main () => runApp(MaterialApp(
   home: MainApp(),
   theme: ThemeData(
     primaryColor: Colors.orangeAccent,
-    accentColor: Colors.deepOrangeAccent
+    accentColor: Colors.orange[800]
   ),
 ));
 
