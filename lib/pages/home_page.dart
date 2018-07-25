@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
+import 'package:food_app/app_state.dart';
 import 'dart:async';
 
 import "package:food_app/models/recipe.dart";
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
 
+  AppState appstate;
   RecipeService recipeService = RecipeService();
   List<Recipe> recipes;
   bool showLoading = false;

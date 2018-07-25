@@ -3,13 +3,17 @@ import 'package:food_app/pages/contact_page.dart';
 import 'package:food_app/pages/donate_page.dart';
 import 'package:food_app/pages/shopping_list_page.dart';
 import "./pages/home_page.dart";
+import "app_state.dart";
+import "app_state_container.dart";
 
-void main () => runApp(MaterialApp(
-  home: MainApp(),
-  theme: ThemeData(
-    primaryColor: Colors.orangeAccent,
-    accentColor: Colors.orange[800]
-  ),
+void main () => runApp(AppStateContainer(
+  child: MaterialApp(
+    home: MainApp(),
+    theme: ThemeData(
+      primaryColor: Colors.orangeAccent,
+      accentColor: Colors.orange[800]
+    ),
+  )
 ));
 
 class MainApp extends StatefulWidget {
