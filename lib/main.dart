@@ -3,7 +3,6 @@ import 'package:food_app/pages/contact_page.dart';
 import 'package:food_app/pages/donate_page.dart';
 import 'package:food_app/pages/shopping_list_page.dart';
 import "./pages/home_page.dart";
-import "app_state.dart";
 import "app_state_container.dart";
 
 void main () => runApp(AppStateContainer(

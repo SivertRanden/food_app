@@ -1,5 +1,7 @@
 
-import "./app_state.dart";
+import 'package:food_app/services/user_service.dart';
+
+import "package:food_app/app_state.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 
@@ -23,10 +25,17 @@ class AppStateContainer extends StatefulWidget {
 class _AppStateContainerState extends State<AppStateContainer> {
 
   AppState state;
+  UserService userService = UserService();
 
   @override
-  initState() {
+  initState(){
     super.initState();
+    if(widget.state != null) {
+      state = widget.state;
+    } else {
+      state = AppState(null);
+      _setUserToState("EvFrWpyVlERRlMuoVVJ7");
+    }
   }
 
   @override
@@ -35,6 +44,10 @@ class _AppStateContainerState extends State<AppStateContainer> {
       data: this,
       child: widget.child
     );
+  }
+
+  void _setUserToState(String id) async {
+    state.user = await userService.getUserById(id);
   }
 }
 

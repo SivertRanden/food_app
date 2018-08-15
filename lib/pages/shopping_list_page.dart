@@ -19,6 +19,8 @@ class ShoppingListState extends State<ShoppingListPage> {
 
   List<Ingredient> _checked = [];
 
+  //Get both lists of all ingredients and list of checked ingredients from user in firebase
+
   @override
   Widget build(BuildContext context) {
     return Column(

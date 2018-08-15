@@ -5,7 +5,7 @@ import 'package:food_app/models/recipe.dart';
 
 class RecipeService {
   
-  var recipesRef = Firestore.instance.collection("recipes");
+  CollectionReference recipesRef = Firestore.instance.collection("recipes");
 
   Future<List<Recipe>> getRecipes() async {
     List<Recipe> recipes = [];

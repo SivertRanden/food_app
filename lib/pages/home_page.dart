@@ -20,9 +20,9 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
 
-  AppState appstate;
-  RecipeService recipeService = RecipeService();
+  AppState appState;
   List<Recipe> recipes;
+  RecipeService recipeService = RecipeService();
   bool showLoading = false;
 
   @override
@@ -44,6 +44,7 @@ class HomePageState extends State<HomePage> {
                       showLoading = true;
                     });
                     recipes = await recipeService.getRecipes();
+                    // appState.user.activeRecipes = recipes;
                     setState(() {
                       showLoading = false;
                     });
